@@ -1,31 +1,31 @@
-# '''
-# 1. Реализовать класс Matrix (матрица). Обеспечить перегрузку конструктора класса (метод __init__()), который должен
-# принимать данные (список списков) для формирования матрицы.
-# Подсказка: матрица — система некоторых математических величин, расположенных в виде прямоугольной схемы.
-# Примеры матриц вы найдете в методичке.
-# Следующий шаг — реализовать перегрузку метода __str__() для вывода матрицы в привычном виде.
-# Далее реализовать перегрузку метода __add__() для реализации операции сложения двух объектов класса Matrix
-# (двух матриц). Результатом сложения должна быть новая матрица.
-# Подсказка: сложение элементов матриц выполнять поэлементно — первый элемент первой строки первой матрицы
-# складываем с первым элементом первой строки второй матрицы и т.д.
-# '''
-#
-# class Matrix:
-#     def __init__(self, _list):
-#         self.l_mx = _list
-#
-#     def __str__(self):
-#         str=''
-#         for line in self.l_mx:
-#             str += f'{line}' + '\n'
-#         return str
-#
-# list = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
-# my_matrix = Matrix(list)
-# print(my_matrix)
-# list = ((1, 2, 3, 3), (4, 5, 6, 6), (7, 8, 9, 9))
-# my_matrix2 = Matrix(list)
-# print(my_matrix2)
+'''
+1. Реализовать класс Matrix (матрица). Обеспечить перегрузку конструктора класса (метод __init__()), который должен
+принимать данные (список списков) для формирования матрицы.
+Подсказка: матрица — система некоторых математических величин, расположенных в виде прямоугольной схемы.
+Примеры матриц вы найдете в методичке.
+Следующий шаг — реализовать перегрузку метода __str__() для вывода матрицы в привычном виде.
+Далее реализовать перегрузку метода __add__() для реализации операции сложения двух объектов класса Matrix
+(двух матриц). Результатом сложения должна быть новая матрица.
+Подсказка: сложение элементов матриц выполнять поэлементно — первый элемент первой строки первой матрицы
+складываем с первым элементом первой строки второй матрицы и т.д.
+'''
+
+class Matrix:
+    def __init__(self, _list):
+        self.l_mx = _list
+
+    def __str__(self):
+        str=''
+        for line in self.l_mx:
+            str += f'{line}' + '\n'
+        return str
+
+list = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+my_matrix = Matrix(list)
+print(my_matrix)
+list = ((1, 2, 3, 3), (4, 5, 6, 6), (7, 8, 9, 9))
+my_matrix2 = Matrix(list)
+print(my_matrix2)
 
 '''
 2. Реализовать проект расчета суммарного расхода ткани на производство одежды. Основная сущность (класс) этого проекта
@@ -37,57 +37,57 @@
 Реализовать общий подсчет расхода ткани. Проверить на практике полученные на этом уроке знания:
 реализовать абстрактные классы для основных классов проекта, проверить на практике работу декоратора @property.
 '''
-# from abc import ABC, abstractmethod
-#
-# class AbsClothes(ABC):
-#
-#     @abstractmethod
-#     def __init__(self, _name):
-#         self.name = _name
-#
-#     @abstractmethod
-#     def fabric_consumption(self):
-#         return 0
-#
-# class Cloths(AbsClothes):
-#     def __init__(self, _name):
-#         self.name = _name
-#
-#     def fabric_consumption(self):
-#         pass
-#
-# class Coat(Cloths):
-#     def __init__(self, _name, _size):
-#         super(Coat, self).__init__(_name)
-#         self.size = _size
-#
-#     @property
-#     def fabric_consumption(self):
-#         return self.size / 6.5 + 0.5
-#
-#     def __str__(self):
-#         return f'Раcход ткани на {self.name} = {self.fabric_consumption}'
-#
-# class Сostume(Cloths):
-#     def __init__(self, _name, _rise):
-#         super(Сostume, self).__init__(_name)
-#         self.rise = _rise
-#
-#     @property
-#     def fabric_consumption(self):
-#         return self.rise * 2 + 0.3
-#
-#     def __str__(self):
-#         return f'Раcход ткани на {self.name} = {self.fabric_consumption}'
-#
-# coat = Coat('Coat autumn', 52)
-# costume = Сostume('Costume festive', 1.84)
-# coat2 = Coat('Coat winter', 54)
-#
-# print(coat)
-# print(costume)
-#
-# print('Общий расход', coat.fabric_consumption + costume.fabric_consumption + coat2.fabric_consumption)
+from abc import ABC, abstractmethod
+
+class AbsClothes(ABC):
+
+    @abstractmethod
+    def __init__(self, _name):
+        self.name = _name
+
+    @abstractmethod
+    def fabric_consumption(self):
+        return 0
+
+class Cloths(AbsClothes):
+    def __init__(self, _name):
+        self.name = _name
+
+    def fabric_consumption(self):
+        pass
+
+class Coat(Cloths):
+    def __init__(self, _name, _size):
+        super(Coat, self).__init__(_name)
+        self.size = _size
+
+    @property
+    def fabric_consumption(self):
+        return self.size / 6.5 + 0.5
+
+    def __str__(self):
+        return f'Раcход ткани на {self.name} = {self.fabric_consumption}'
+
+class Сostume(Cloths):
+    def __init__(self, _name, _rise):
+        super(Сostume, self).__init__(_name)
+        self.rise = _rise
+
+    @property
+    def fabric_consumption(self):
+        return self.rise * 2 + 0.3
+
+    def __str__(self):
+        return f'Раcход ткани на {self.name} = {self.fabric_consumption}'
+
+coat = Coat('Coat autumn', 52)
+costume = Сostume('Costume festive', 1.84)
+coat2 = Coat('Coat winter', 54)
+
+print(coat)
+print(costume)
+
+print('Общий расход', coat.fabric_consumption + costume.fabric_consumption + coat2.fabric_consumption)
 
 '''
 3. Реализовать программу работы с органическими клетками. Необходимо создать класс Клетка. В его конструкторе
